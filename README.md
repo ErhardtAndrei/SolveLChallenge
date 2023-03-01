@@ -1,6 +1,7 @@
 # Solve Light Challenge
 Intelligent Shopping Cart Problem Proposed by Solve Light to internship candidates.
 
+
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/ErhardtAndrei/SolveLChallenge/blob/main/LICENCE) 
 
 # About the project
