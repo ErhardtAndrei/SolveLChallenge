@@ -1,0 +1,92 @@
+algoritmo "DesafioSolveL"
+var
+   vetPreco: vetor[1..10] de inteiro
+   vetProduto: vetor [1..10] de caractere
+   numProdutos,i, j, op, valorTot: inteiro
+   opc: caractere
+   notas: vetor[1..7] de inteiro
+   qtdNotas: vetor[1..7] de inteiro
+   valorRestante, qtdTotalNotas: inteiro
+Procedimento Carrinho()
+inicio
+   LimpaTela
+   Escreval("-------------------------------------")
+   Escreval(" C A R R I N H O  D E  C O M P R A S ")
+   Escreval(" Valor total no carrinho: R$",valorTot)
+   Escreval("-------------------------------------")
+FimProcedimento
+
+Procedimento Menu()
+Inicio
+   LimpaTela
+   Escreval("==========================")
+   Escreval("        | M E N U |       ")
+   Escreval("==========================")
+   Escreval("|Escolha uma das opcoes  |")
+   Escreval("|[1] Cadastrar produtos  |")
+   Escreval("|[2] Encerrar programa   |")
+   Leia(op)
+FimProcedimento
+
+inicio
+   valorTot<-0
+   opc<- "Nao"
+   qtdTotalNotas <- 0
+   Menu()
+   Se (op = 1) ou (opc = "Sim") entao
+      Carrinho()
+      Para i <- numProdutos+1 ate 10 faca
+         Escreva("Produto a ser cadastrado: ")
+         Leia(vetProduto[i])
+         Escreva("Preco do produto em R$: ")
+         Leia(vetPreco[i])
+         numProdutos<-numProdutos+1
+         valorTot <- valorTot + vetPreco[i]
+         Escreva("Deseja continuar as compras? [Sim/Nao]: ")
+         Leia(opc)
+         LimpaTela
+         Carrinho()
+
+         Se (opc = "Nao") entao
+            Carrinho()
+            valorRestante <- valorTot
+
+            Para j <-1 ate numProdutos faca
+               Se (vetProduto[j] <> "") e (vetPreco[j] <> 0) entao
+                  Escreval("Produto n.", j,": ",vetProduto[j],". No valor de R$",vetPreco[j])
+               FimSe
+            FimPara
+
+            notas[1] <- 1
+            notas[2] <- 2
+            notas[3] <- 5
+            notas[4] <- 10
+            notas[5] <- 20
+            notas[6] <- 50
+            notas[7] <- 100
+
+            valorRestante <- valorTot
+
+            Para i<-7 ate 1 passo -1 faca
+               qtdNotas[i]<- valorRestante div notas[i]
+               qtdTotalNotas <- qtdTotalNotas + qtdNotas[i]
+               valorRestante<- valorRestante % notas[i]
+            FimPara
+
+            Para i<-1 ate 7 faca
+               Se (qtdNotas[i] > 0) entao
+                  Escreval(qtdNotas[i], " nota(s) de R$ ", notas[i])
+               FimSe
+            FimPara
+            Escreval("A quantidade mínima de notas é:  ", qtdTotalNotas, " notas")
+            Escreval("Obrigado por comprar conosco!")
+            Interrompa
+         FimSe
+      FimPara
+   FimSe
+
+   Se (op = 2) entao
+      Escreva("Nada foi adicionada ao carrinho. Obrigado e volte sempre!")
+      interrompa
+   FimSe
+fimalgoritmo
