@@ -29,69 +29,30 @@ If number 2 is pressed, the system will be terminated.
 ![W1](https://github.com/ErhardtAndrei/SolveLChallenge/blob/main/imgs/1_menu.png) ![W2](https://github.com/ErhardtAndrei/SolveLChallenge/blob/main/imgs/1.1_menu.png)
 
 ### Step two
-After the user starts the system, the shopping cart will begin with the total value up to that point. Then, the user can choose a product to be registered and its value. If they wish to continue, they simply need to type "Yes", and then the product and its value will be stored, and the total purchase value will be displayed on the screen.
+After the user starts the system, the shopping cart will begin with the total value up to that point. Then, the user can choose a product to be registered and its value. If they wish to continue, they simply need to type "Yes", and then the product and its value will be stored, and the total purchase value will be displayed on the screen. Thus, the user can keep adding items as long as they do not exceed the maximum limit of 10 items defined by the system.
 
-![W3](https://github.com/ErhardtAndrei/SolveLChallenge/blob/main/imgs/2_carrinho.png) ![W4](https://github.com/ErhardtAndrei/SolveLChallenge/blob/main/imgs/3_cad_product.png)
-### Layout web
-![Web 1](https://github.com/acenelio/assets/raw/main/sds1/web1.png)
+![W3](https://github.com/ErhardtAndrei/SolveLChallenge/blob/main/imgs/2_carrinho.png) ![W4](https://github.com/ErhardtAndrei/SolveLChallenge/blob/main/imgs/3_cad_product.png) ![W5](https://github.com/ErhardtAndrei/SolveLChallenge/blob/main/imgs/4_new_prodct.png) 
 
-![Web 2](https://github.com/acenelio/assets/raw/main/sds1/web2.png)
+### Step three
+Then, the system will end, return the total purchase value, count the minimum notes, and indicate how much of each note will be necessary to make this transaction. The system will end if the user registers 10 products or wishes to end before registering the limit number by typing "No" for the question "Do you want to continue shopping?".
 
-## Modelo conceitual
-![Modelo Conceitual](https://github.com/acenelio/assets/raw/main/sds1/modelo-conceitual.png)
+![W6](https://github.com/ErhardtAndrei/SolveLChallenge/blob/main/imgs/5_end_program.png)
+![W7](https://github.com/ErhardtAndrei/SolveLChallenge/blob/main/imgs/6_result.png)
 
 # Tecnologias utilizadas
 ## Back end
-- Java
-- Spring Boot
-- JPA / Hibernate
-- Maven
+- Pascal
+- Python (Not implemented yet)
+- JavaScript (Not implemented yet)
 ## Front end
-- HTML / CSS / JS / TypeScript
-- ReactJS
-- React Native
-- Apex Charts
-- Expo
-## Implantação em produção
-- Back end: Heroku
-- Front end web: Netlify
-- Banco de dados: Postgresql
+-(Not implemented yet)
 
 # Como executar o projeto
+-Dowloading and executing the software: VisualG 3.
 
-## Back end
-Pré-requisitos: Java 11
-
-```bash
-# clonar repositório
-git clone https://github.com/devsuperior/sds1-wmazoni
-
-# entrar na pasta do projeto back end
-cd backend
-
-# executar o projeto
-./mvnw spring-boot:run
-```
-
-## Front end web
-Pré-requisitos: npm / yarn
-
-```bash
-# clonar repositório
-git clone https://github.com/devsuperior/sds1-wmazoni
-
-# entrar na pasta do projeto front end web
-cd front-web
-
-# instalar dependências
-yarn install
-
-# executar o projeto
-yarn start
-```
 
 # Autor
 
-Wellington Mazoni de Andrade
+Andrei Fernando Erhardt
 
-https://www.linkedin.com/in/wmazoni
+https://www.linkedin.com/in/erhardtandrei/
