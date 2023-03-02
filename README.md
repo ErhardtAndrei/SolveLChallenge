@@ -19,7 +19,7 @@ The intelligent shopping cart is a problem proposed by the technology company So
 5- If the user decides to finish the cart, the system should display all purchased products, the total value of the cart, and the minimum number of bills required to pay for this cart. (Only the following bills should be considered: 100, 50, 20, 10, 5, 2, and 1).
 
 ## Introducing the Algorithm
-This is the first version of the proposed code, was developed in Pascal using the software VISUALG 3, since it is a generic and fast development language for simple problems.
+This is the first version of the proposed code, was developed in Pascal using the software VISUALG 3, since it is a generic and fast development language for simple problems. The next versions will be made in Python and JavaScript.
 ### Step one
 The user must choose whether they want to start the system or end it.
 
