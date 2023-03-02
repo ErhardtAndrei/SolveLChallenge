@@ -7,11 +7,12 @@ var
    notas: vetor[1..7] de inteiro
    qtdNotas: vetor[1..7] de inteiro
    valorRestante, qtdTotalNotas: inteiro
+
 Procedimento Carrinho()
 inicio
    LimpaTela
    Escreval("-------------------------------------")
-   Escreval(" C A R R I N H O  D E  C O M P R A S ")
+   Escreval(" C A R R I N H O D E C O M P R A S ")
    Escreval(" Valor total no carrinho: R$",valorTot)
    Escreval("-------------------------------------")
 FimProcedimento
@@ -20,11 +21,11 @@ Procedimento Menu()
 Inicio
    LimpaTela
    Escreval("==========================")
-   Escreval("        | M E N U |       ")
+   Escreval(" | M E N U | ")
    Escreval("==========================")
-   Escreval("|Escolha uma das opcoes  |")
-   Escreval("|[1] Cadastrar produtos  |")
-   Escreval("|[2] Encerrar programa   |")
+   Escreval("|Escolha uma das opcoes |")
+   Escreval("|[1] Cadastrar produtos |")
+   Escreval("|[2] Encerrar programa |")
    Leia(op)
 FimProcedimento
 
@@ -47,7 +48,7 @@ inicio
          LimpaTela
          Carrinho()
 
-         Se (opc = "Nao") entao
+         Se (numProdutos = 10) ou (opc = "Nao") entao
             Carrinho()
             valorRestante <- valorTot
 
