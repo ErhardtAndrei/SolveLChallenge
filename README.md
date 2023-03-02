@@ -49,8 +49,11 @@ Then, the system will end, return the total purchase value, count the minimum no
 -(Not implemented yet)
 
 # Como executar o projeto
--Dowloading and executing the software: VisualG 3.
 
+- Dowloading and executing the software: VisualG 3.
+- Clone this repository
+- Open the code .ARG on VisualG 3.
+- Execute it pressing F9
 
 # Autor
 
