@@ -1,0 +1,74 @@
+import os
+
+notas = [1, 2, 5, 10, 20, 50, 100]
+qtdNotas = [0, 0, 0, 0, 0, 0, 0]
+qtdTotalNotas = 0
+valorRestante = 0
+valorTot = 0
+vetPreco = [0] * 10
+vetProduto = [""] * 10
+numProdutos = i = j = op = 0
+opc = "Nao"
+
+
+# adicionando as funções de chamada do sistema
+def Carrinho():
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print("-------------------------------------")
+    print(" C A R R I N H O  D E  C O M P R A S ")
+    print(" Valor total no carrinho: R$", valorTot)
+    print("-------------------------------------")
+
+
+def Menu():
+    global op, opc
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print("==========================")
+    print("        | M E N U |       ")
+    print("==========================")
+    print("|Escolha uma das opcoes  |")
+    print("|[1] Cadastrar produtos  |")
+    print("|[2] Encerrar programa   |")
+    opc = input()
+    op = int(opc)
+
+
+# inicio do código com a chamada da função Menu()
+Menu()
+
+if op == 1:
+
+    Carrinho()
+
+    while numProdutos < 10:
+        vetProduto[numProdutos] = input("Produto a ser cadastrado: ")
+        vetPreco[numProdutos] = int(input("Preco do produto em R$: "))
+        numProdutos += 1
+        valorTot += vetPreco[numProdutos-1]
+        opc = input("Deseja continuar as compras? [Sim/Nao]: ")
+
+        Carrinho()
+
+        if opc == "Nao" or numProdutos == 10:
+            Carrinho()
+            valorRestante = valorTot
+
+            for j in range(0, numProdutos):
+                if vetProduto[j] != "" and vetPreco[j] != 0:
+                    print("Produto n.", j+1, ": ",
+                          vetProduto[j], ". No valor de R$", vetPreco[j])
+
+            for i in range(6, -1, -1):
+                qtdNotas[i] = valorRestante // notas[i]
+                qtdTotalNotas += qtdNotas[i]
+                valorRestante %= notas[i]
+
+            for i in range(7):
+                if qtdNotas[i] > 0:
+                    print(qtdNotas[i], " nota(s) de R$ ", notas[i])
+            print("A quantidade mínima de notas é: ", qtdTotalNotas, " notas")
+            print("Obrigado por comprar conosco!")
+            break
+
+if op == 2:
+    print("Nada foi adicionado ao carrinho. Obrigado e volte sempre!")
