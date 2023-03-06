@@ -46,7 +46,7 @@ Then, the system will end, return the total purchase value, count the minimum no
 - Python 
 - JavaScript (Not implemented yet)
 ## Front end
--(Not implemented yet)
+- Development in progress using python.
 
 # Como executar o projeto
 ## Pascal
