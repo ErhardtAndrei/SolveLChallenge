@@ -1,0 +1,122 @@
+import customtkinter as ctk
+from tkinter import *
+from tkinter import messagebox
+import openpyxl
+import xlrd
+import pathlib
+from openpyxl import Workbook
+
+# definindo a aparência da janela do sistema
+ctk.set_appearance_mode("System")
+ctk.set_default_color_theme("blue")
+
+
+class App(ctk.CTk):
+    def __init__(self):
+        # indica que a classe init é de nivel mais avançado (classe principal do sistema)
+        super().__init__()
+        self.layout_config()  # chama a função criada dentro da função "__init__"
+        self.appearance()
+        self.iniciation()
+        self.todo_sistema()
+
+    def layout_config(self):  # essa função referencia a classe "self"
+        self.title("Sistema de Cadastro de Clientes")
+        self.geometry("700x500")  # define o tamanho da janel
+
+    def appearance(self): #botao para escolher o tema da janela
+        self.lb_apm = ctk.CTkLabel(self, text="Tema", bg_color="transparent", text_color=['#000', "#fff"]).place(x=50, y=430)  # apm = appearance mode. '#000',"#fff" 000 = fundo preto fff = letra branca
+        self.opt_apm = ctk.CTkOptionMenu(self, values=["Light", "Dark", "System"], command=self.change_apm).place(x=50, y=460) # difinido em 460 para ficar logo abaixo do texto 'Tema'
+
+    def iniciation(self):
+        self.lb_apm = ctk.CTkLabel(self, text="Deseja iniciar o cadastro ou encerrar o programa?", bg_color="transparent", text_color=['#000', "#fff"]).place(x=250, y=430)  # apm = appearance mode. '#000',"#fff" 000 = fundo preto fff = letra branca
+
+    def todo_sistema(self): #barra de titulo da janela
+        frame = ctk.CTkFrame(self, width=700, height=50, corner_radius=0, bg_color="teal", fg_color="teal").place(x=0, y=10) # barra horizontal no topo da janela
+        title = ctk.CTkLabel(frame, text="Sistema de Cadastro", font=("Century Gothic bold", 24), text_color="#000", bg_color="teal")
+        title.place(relx=0.5, y=35, anchor='center') #centraliza o texto na posição x
+        spam = ctk.CTkLabel(self, text="Por favor preencha o formulario!", font=("Century Gothic bold", 16), text_color=["#000","#fff"]).place(x=50, y=70)
+        
+        def submit():
+            name = name_entry.get()
+            address = address_value.get()
+            age = age_entry.get()
+            gender = gender_combobox.get()
+
+        def clear():
+            product_value.set("")
+            price_value.set("")
+
+        #Texts variables
+
+        address_value = StringVar()
+        age_value = StringVar()
+        name_value = StringVar()
+        product_value = StringVar()
+        price_value = StringVar()
+        confirmation_value = StringVar()
+
+        #Entrys
+        address_entry = ctk.CTkEntry(self, width=150, textvariable=address_value, font=("Century Gothic bold", 16), fg_color="transparent")
+        
+        age_entry = ctk.CTkEntry(self, width=50, textvariable=age_value, font=("Century Gothic bold", 16), fg_color="transparent")
+
+        name_entry = ctk.CTkEntry(self, width=200, textvariable=name_value, font=("Century Gothic bold", 16), fg_color="transparent")
+        
+        product_entry = ctk.CTkEntry(self, width=150, textvariable=product_value, font=("Century Gothic bold", 16), fg_color="transparent")
+        
+        price_entry = ctk.CTkEntry(self, width=200, textvariable=price_value, font=("Century Gothic bold", 16), fg_color="transparent")
+        
+        confirmation_entry = ctk.CTkEntry(self, width=100, textvariable=confirmation_value, font=("Century Gothic bold", 16), fg_color="transparent")
+
+        #combobox
+        gender_combobox = ctk.CTkComboBox(self, values=["Masculino", "Feminino"], font=("Century Gothic bold", 14))
+        gender_combobox.set("Masculino")
+
+
+        #Labels
+        lb_address = ctk.CTkLabel(self, text="Cidade:", font=("Century Gothic bold", 16), text_color=["#000","#fff"])
+        
+        lb_age = ctk.CTkLabel(self, text="Idade:", font=("Century Gothic bold", 16), text_color=["#000","#fff"])
+        
+        lb_name = ctk.CTkLabel(self, text="Nome completo do usuário:", font=("Century Gothic bold", 16), text_color=["#000","#fff"])
+        
+        lb_gender = ctk.CTkLabel(self, text="Gênero:", font=("Century Gothic bold", 16), text_color=["#000","#fff"])
+
+        lb_product = ctk.CTkLabel(self, text="Produto a ser cadastrado:", font=("Century Gothic bold", 16), text_color=["#000","#fff"])
+
+        lb_price = ctk.CTkLabel(self, text="Preço do produto:", font=("Century Gothic bold", 16), text_color=["#000","#fff"])
+
+        lb_confirmation = ctk.CTkLabel(self, text="Deseja cadastrar outro produto?", font=("Century Gothic bold", 16), text_color=["#000","#fff"])
+
+        btn_submit = ctk.CTkButton(self, text="Iniciar cadastro".upper(),command=submit, fg_color="#151",hover_color="#131").place(x=250, y=460) 
+
+        btn_submit = ctk.CTkButton(self, text="Encerrar programa".upper(),command=submit, fg_color="#555",hover_color="#333").place(x=450, y=460)
+
+        #btn_clear = ctk.CTkButton(cadastro, text="Cadastrar prox produto".upper(),command=submit, fg_color="#555",hover_color="#333").place(x=450, y=460)
+
+        #btn_submit = ctk.CTkButton(cadastro, text="Finalizar compras".upper(),command=submit, fg_color="#555",hover_color="#333").place(x=450, y=460)
+
+        #posicionando os elementos na janela
+        lb_name.place(x=50,y=120)
+        name_entry.place(x=50,y=150)
+
+        lb_age.place(x=500,y=120)
+        age_entry.place(x=500,y=150)
+
+        lb_address.place(x=300, y=120)
+        address_entry.place(x=300, y=150)
+
+        lb_gender.place(x=50, y=190)
+        gender_combobox.place(x=50, y=220)
+
+
+
+    def change_apm(self, nova_aparencia):
+        ctk.set_appearance_mode(nova_aparencia)
+
+
+# inilializando a janela
+if __name__ == "__main__":
+    app = App()
+    app.mainloop()
