@@ -111,9 +111,9 @@ class App(ctk.CTk):
         gender_combobox.place(x=50, y=220)
 
 
-
     def change_apm(self, nova_aparencia):
         ctk.set_appearance_mode(nova_aparencia)
+
 
 
 # inilializando a janela
