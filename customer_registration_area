@@ -69,7 +69,7 @@ class App(ctk.CTk):
         
         confirmation_entry = ctk.CTkEntry(self, width=100, textvariable=confirmation_value, font=("Century Gothic bold", 16), fg_color="transparent")
 
-        #combobox
+        #droplist command -> combobox
         gender_combobox = ctk.CTkComboBox(self, values=["Masculino", "Feminino"], font=("Century Gothic bold", 14))
         gender_combobox.set("Masculino")
 
