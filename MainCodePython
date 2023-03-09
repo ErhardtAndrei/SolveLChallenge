@@ -10,8 +10,6 @@ vetProduto = [""] * 10
 numProdutos = i = j = op = 0
 opc = "Nao"
 
-
-# adicionando as funções de chamada do sistema
 def Carrinho():
     os.system('cls' if os.name == 'nt' else 'clear')
     print("-------------------------------------")
@@ -55,19 +53,18 @@ if op == 1:
 
             for j in range(0, numProdutos):
                 if vetProduto[j] != "" and vetPreco[j] != 0:
-                    print("Produto n.", j+1, ": ",
-                          vetProduto[j], ". No valor de R$", vetPreco[j])
+                    print("Produto n.", j+1, ": ", vetProduto[j], ". No valor de R$", vetPreco[j])
 
             for i in range(6, -1, -1):
-                qtdNotas[i] = valorRestante // notas[i]
+                qtdNotas[i] = valorRestante
                 qtdTotalNotas += qtdNotas[i]
                 valorRestante %= notas[i]
 
             for i in range(7):
                 if qtdNotas[i] > 0:
                     print(qtdNotas[i], " nota(s) de R$ ", notas[i])
-            print("A quantidade mínima de notas é: ", qtdTotalNotas, " notas")
-            print("Obrigado por comprar conosco!")
+                    print("A quantidade mínima de notas é: ", qtdTotalNotas, " notas")
+                    print("Obrigado por comprar conosco!")
             break
 
 if op == 2:
