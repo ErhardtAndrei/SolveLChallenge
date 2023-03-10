@@ -40,7 +40,7 @@ Then, the system will end, return the total purchase value, count the minimum no
 ![W6](https://github.com/ErhardtAndrei/SolveLChallenge/blob/main/imgs/5_end_program.png)
 ![W7](https://github.com/ErhardtAndrei/SolveLChallenge/blob/main/imgs/6_result.png)
 
-# Tecnologias utilizadas
+# Technologies 
 ## Back end
 - Pascal
 - Python 
@@ -48,7 +48,7 @@ Then, the system will end, return the total purchase value, count the minimum no
 ## Front end
 - Development in progress using python.
 
-# Como executar o projeto
+# How to execute the project
 ## Pascal
 - Dowloading and executing the software: VisualG 3.
 - Clone MainCodePascal in this repository.
@@ -56,12 +56,13 @@ Then, the system will end, return the total purchase value, count the minimum no
 - Save as .ARG extension.
 - Execute it pressing F9.
 ## Python
+- Import the 'os' library to execute.
 - Clone MainCodePython in this repository.
 - Copy to VScode or software of your choice.
 - Save as .py extension.
 - Run the project.
 
-# Autor
+# Author
 
 Andrei Fernando Erhardt
 
