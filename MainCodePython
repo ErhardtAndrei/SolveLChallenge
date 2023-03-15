@@ -8,7 +8,6 @@ valorTot = 0
 vetPreco = [0] * 10
 vetProduto = [""] * 10
 numProdutos = i = j = op = 0
-opc = "Nao"
 
 def Carrinho():
     os.system('cls' if os.name == 'nt' else 'clear')
