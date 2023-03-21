@@ -148,7 +148,7 @@ class App(ctk.CTk, BackEnd):
         self.span.grid(row=5, column=0, padx=10)
 
         self.btn_logon = ctk.CTkButton(self.frame_login, width=300, text="Logon".upper(),font=("Century Gothic bold", 10),corner_radius=20, command=self.tela_de_cadastro)
-        self.btn_logon.grid(row=6, column=0, padx=10, pady=10)
+        self.btn_logon.grid(row=6, column=0, padx=10, pady=30)
     
     #criando a tela de cadastro
     def tela_de_cadastro(self):
