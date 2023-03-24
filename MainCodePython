@@ -64,7 +64,7 @@ if op == 1:
                     print(qtdNotas[i], " nota(s) de R$ ", notas[i])
                     print("A quantidade mínima de notas é: ", qtdTotalNotas, " notas")
                     print("Obrigado por comprar conosco!")
-            break
+         break
 
 if op == 2:
     print("Nada foi adicionado ao carrinho. Obrigado e volte sempre!")
