@@ -20,8 +20,6 @@ vetPreco = []
 vetProduto = []
 valorTot = 0
 
-#numProdutos = i = j = op = 0
-#numProdutos=0
 
 class BackEnd(): #A classe backend herda os componentes da classe principal App, por isso está dentro de App
     #def __init__(self):
@@ -130,7 +128,6 @@ class BackEnd(): #A classe backend herda os componentes da classe principal App,
                         print(nome)
 
         except:
-            
             traceback.print_exc()   
 
     def finish_registers(self):
@@ -251,6 +248,7 @@ class App(ctk.CTk, BackEnd):
         
         self.btn_login_back = ctk.CTkButton(self.frame_register_products, width=300, text="Voltar".upper(),font=("Century Gothic bold", 12),corner_radius=20, command=self.tela_de_login)
         self.btn_login_back.grid(row=10, column=0, padx=10, pady=50)
+        
         '''
     def ballots_result(self):
         #Adiciona frame tela de resultados
