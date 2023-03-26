@@ -7,7 +7,6 @@ from tkinter import *
 import sqlite3
 from tkinter import messagebox
 
-
 warnings.filterwarnings("ignore") #Usado temporariamente para ignorar o aviso CTkimage
 
 notas = [1, 2, 5, 10, 20, 50, 100]
@@ -18,7 +17,6 @@ numProdutos = i = j = op = 0
 vetPreco = []
 vetProduto = []
 valorTot= 0
-
 
 class BackEnd(): #A classe backend herda os componentes da classe principal App, por isso está dentro de App
     
@@ -117,9 +115,10 @@ class BackEnd(): #A classe backend herda os componentes da classe principal App,
                 if (len(vetProduto) < 10):
                     vetProduto.append(self.product_name)
                     vetPreco.append(int(self.product_value))
+                    messagebox.showinfo(title="Sistema de Cadastro de Produtos", message="Produto cadastrado.")
                     self.limpa_entrys_products()                   
         except:
-            traceback.print_exc()   
+            traceback.print_exc() #Conferir quais erros estão chegando ao except   
 
     def finish_registers(self):
         global qtdTotalNotas
@@ -132,7 +131,6 @@ class BackEnd(): #A classe backend herda os componentes da classe principal App,
                 qtdTotalNotas += qtdNotas[i]
                 valorRestante %= notas[i]
         
-
         self.qntTotal = qtdTotalNotas
         self.notas100 = qtdNotas[6]
         self.notas50  = qtdNotas[5]
@@ -144,9 +142,6 @@ class BackEnd(): #A classe backend herda os componentes da classe principal App,
 
         print(self.notas100)
         self.ballots_result()
-        
-        
-        
 
 #Classe principal. Inicia a janela
 class App(ctk.CTk, BackEnd): 
@@ -260,8 +255,7 @@ class App(ctk.CTk, BackEnd):
         
         self.btn_login_back = ctk.CTkButton(self.frame_register_products, width=300, text="Voltar".upper(),font=("Century Gothic bold", 12),corner_radius=20, command=self.tela_de_login)
         self.btn_login_back.grid(row=10, column=0, padx=10, pady=80)
-        
-        
+          
     def ballots_result(self):
         #Adiciona frame tela de resultados
         self.frame_ballots_result = ctk.CTkFrame(self, width=380, fg_color="#dcdcdc", height=310)
@@ -304,8 +298,6 @@ class App(ctk.CTk, BackEnd):
         self.btn_login_exit = ctk.CTkButton(self.frame_ballots_result, width=100, height=15, text="Sair".upper(),font=("Century Gothic bold", 12),corner_radius=20, command=self.tela_de_login)
         self.btn_login_exit.grid(row=11, column=0, padx=5, pady=0)
 
-        
-
     def limpa_entrys_cadastro(self):
         self.username_logon_entry.delete(0,END)
         self.usermail_logon_entry.delete(0,END)
@@ -320,48 +312,7 @@ class App(ctk.CTk, BackEnd):
         self.product_name_entry.delete(0,END)
         self.product_value_entry.delete(0,END)
 
-
 # inicio do código com a chamada da função Menu()
 if __name__=="__main__":
     app = App()
     app.mainloop()
-
-
-'''
-if op == 1:
-
-    #Carrinho()
-
-    while numProdutos < 10:
-        vetProduto[numProdutos] = input("Produto a ser cadastrado: ")
-        vetPreco[numProdutos] = int(input("Preco do produto em R$: "))
-        numProdutos += 1
-        valorTot += vetPreco[numProdutos-1]
-        opc = input("Deseja continuar as compras? [Sim/Nao]: ")
-
-        #Carrinho()
-
-        if opc == "Nao" or numProdutos == 10:
-            Carrinho()
-            valorRestante = valorTot
-
-            for j in range(0, numProdutos):
-                if vetProduto[j] != "" and vetPreco[j] != 0:
-                    print("Produto n.", j+1, ": ",
-                          vetProduto[j], ". No valor de R$", vetPreco[j])
-
-            for i in range(6, -1, -1):
-                qtdNotas[i] = valorRestante // notas[i]
-                qtdTotalNotas += qtdNotas[i]
-                valorRestante %= notas[i]
-
-            for i in range(7):
-                if qtdNotas[i] > 0:
-                    print(qtdNotas[i], " nota(s) de R$ ", notas[i])
-                    print("A quantidade mínima de notas é: ", qtdTotalNotas, " notas")
-                    print("Obrigado por comprar conosco!")
-            break
-
-if op == 2:
-    print("Nada foi adicionado ao carrinho. Obrigado e volte sempre!")
-    '''
