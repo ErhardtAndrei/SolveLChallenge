@@ -21,17 +21,12 @@ The intelligent shopping cart is a problem proposed by the technology company So
 ## Introducing the Algorithm
 This is the first version of the proposed code, was developed in Pascal using the software VISUALG 3, since it is a generic and fast development language for simple problems. The next versions will be made in different languages such Python and JavaScript.
 
-This challenge has an extra step, which would be to develop a registration screen for users. This step can be seen from Step Four. With the main logic developed, a graphical interface for user registration is then developed. This interface was developed in python using the *tkinter* library. 
+This challenge has an extra step, which would be to develop a registration screen for users. This step can be seen from Step Four. With the main logic developed, a graphical interface for user registration is then developed. This interface was developed in Python using the *tkinter* library. 
 
-It is worth mentioning that the extra challenge asks for the implementation of a user registration system for the main problem, that is, after the user registers, he will be able to login and then register the products and the respective values. 
-
-***However, so far, the developed code only implements a user registration that creates a record using data base. The final step of integrating the minimum grade count ballots logic with the user interface is still being developed...***
+The following steps demonstrate the functioning of the product registration system. From "Step one" to "Step four," only the programming logic used to develop the registration is presented, with the same logic in both Pascal and Python. From there, the graphical interface for the user is presented.
 
 ### Step one
-The user must choose whether they want to start the system or end it.
-
-If the number 1 is pressed, the user will be directed to the shopping cart. 
-
+The user must choose whether they want to start the system or end it. If the number 1 is pressed, the user will be directed to the shopping cart. 
 If number 2 is pressed, the system will be terminated.
 
 ![W1](https://github.com/ErhardtAndrei/SolveLChallenge/blob/main/imgs/1_menu.png) ![W2](https://github.com/ErhardtAndrei/SolveLChallenge/blob/main/imgs/1.1_menu.png)
@@ -68,33 +63,46 @@ Then, the user must return to the login screen and enter the registered user and
 ![W14](https://github.com/ErhardtAndrei/SolveLChallenge/blob/main/imgs/12.1_error_connect.png)
 ![W15](https://github.com/ErhardtAndrei/SolveLChallenge/blob/main/imgs/12_connected_user.png)
 
+### Step seven
+Once the user is connected, the system redirect from the initial page to the products cadastration area. The user must introduce the product name and the value, respectively. 
+
+![W16](https://github.com/ErhardtAndrei/SolveLChallenge/blob/main/imgs/registerarea_13.png)
+![W17](https://github.com/ErhardtAndrei/SolveLChallenge/blob/main/imgs/registerarea_13.1.png)
+
+### Step ten
+After registering the product, it will be stored in a vector for the system to calculate the ballots. Then, clicking "Encenrrar cadastro" the system will show how many ballots is needed to pay the shopping cart.
+
+![W18](https://github.com/ErhardtAndrei/SolveLChallenge/blob/main/imgs/registerarea13.2.png)
+![W19](https://github.com/ErhardtAndrei/SolveLChallenge/blob/main/imgs/15_ex1.png)
+![W20](https://github.com/ErhardtAndrei/SolveLChallenge/blob/main/imgs/14_result.png)
+
 ## Back end
 - Pascal
 - Python 
 - SQLite3 (as data base)
 - JavaScript (Not implemented yet)
 ## Front end
-- Development in progress using python.
+- Python
 
 # How to execute the project
 ## Pascal
-- Dowloading and executing the software: VisualG 3.
-- Clone MainCodePascal in this repository.
-- Copy to to VisualG 3.
+- Dowload and execute the software: VisualG 3.
+- Download MainCodePascal in this repository.
 - Save as .ARG extension.
+- Open at the software VisualG 3.
 - Execute it pressing F9.
 ## Python
-- Import the 'os' library to execute.
-- Clone MainCodePython in this repository.
-- Copy to VScode or software of your choice.
+- Download MainCodePython in this repository.
 - Save as .py extension.
+- Open the file .py in your preferred Python editor.
 - Run the project.
 
-##Python user interface
-- Clone the folder Sistema de Cadastro
+## Python user interface
+- Clone this repository.
 - Dowload and install SQLite software (DB Browser) for creating and storing .db data.
 - You may or may not keep the .db file in the destination folder. The interface will automatically generate a .db file if one is not already created.
-- Execute the main code Cadastro.py
+- Make sure the figure *solve-img.png* is in the right patch.
+- Execute the main code Cadastro.py.
 
 # Author
 
