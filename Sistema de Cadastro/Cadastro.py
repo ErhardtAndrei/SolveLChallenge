@@ -13,10 +13,9 @@ notas = [1, 2, 5, 10, 20, 50, 100]
 qtdNotas = [0, 0, 0, 0, 0, 0, 0]
 qtdTotalNotas = 0
 valorRestante = 0
-numProdutos = i = j = op = 0
 vetPreco = []
 vetProduto = []
-valorTot= 0
+valorTot= i =  0
 
 class BackEnd(): #A classe backend herda os componentes da classe principal App, por isso está dentro de App
     
