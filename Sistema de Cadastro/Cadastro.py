@@ -14,17 +14,14 @@ notas = [1, 2, 5, 10, 20, 50, 100]
 qtdNotas = [0, 0, 0, 0, 0, 0, 0]
 qtdTotalNotas = 0
 valorRestante = 0
-
-numProdutos = 0
+numProdutos = i = j = op = 0
 vetPreco = []
 vetProduto = []
-valorTot = 0
+valorTot= 0
 
 
 class BackEnd(): #A classe backend herda os componentes da classe principal App, por isso está dentro de App
-    #def __init__(self):
-        #self.numProdutos()
-        
+    
     def connect_db(self): #Conectando ao banco de dados
         self.conn = sqlite3.connect('Users_data.db')
         self.cursor = self.conn.cursor()
@@ -120,19 +117,35 @@ class BackEnd(): #A classe backend herda os componentes da classe principal App,
                 if (len(vetProduto) < 10):
                     vetProduto.append(self.product_name)
                     vetPreco.append(int(self.product_value))
-                    messagebox.showwarning(title="Sistema de Cadastro de Produtos", message="produto cad")
-                    self.limpa_entrys_products()
-                    for valor in (vetPreco): #verifica os valroes adicionados às posições
-                        print(valor)
-                    for nome in (vetProduto): #Verifica os produtos adicionados às posições
-                        print(nome)
-
+                    self.limpa_entrys_products()                   
         except:
             traceback.print_exc()   
 
     def finish_registers(self):
+        global qtdTotalNotas
         valorTot = sum(vetPreco)
-        print(valorTot)
+        self.valorTot = valorTot
+        valorRestante = valorTot
+
+        for i in range(6, -1, -1):
+                qtdNotas[i] = valorRestante // notas[i]
+                qtdTotalNotas += qtdNotas[i]
+                valorRestante %= notas[i]
+        
+
+        self.qntTotal = qtdTotalNotas
+        self.notas100 = qtdNotas[6]
+        self.notas50  = qtdNotas[5]
+        self.notas20  = qtdNotas[4]
+        self.notas10  = qtdNotas[3]
+        self.notas5   = qtdNotas[2]
+        self.notas2   = qtdNotas[1]
+        self.notas1   = qtdNotas[0]
+
+        print(self.notas100)
+        self.ballots_result()
+        
+        
         
 
 #Classe principal. Inicia a janela
@@ -142,7 +155,6 @@ class App(ctk.CTk, BackEnd):
         self.config_janela_inicial() #da o start nas config da janela inicial
         self.tela_de_login()
         self.create_table()
-        
 
     #Configurando a janela principal
     def config_janela_inicial(self):
@@ -179,7 +191,7 @@ class App(ctk.CTk, BackEnd):
         self.btn_login.grid(row=4, column=0, padx=10, pady=10)
 
         self.span = ctk.CTkLabel(self.frame_login, text="Não possui cadastro?", font=("Century Gothic", 10))
-        self.span.grid(row=5, column=0, padx=10)
+        self.span.grid(row=5, column=0, padx=10, pady=20)
 
         self.btn_logon = ctk.CTkButton(self.frame_login, width=300, text="Logon".upper(),font=("Century Gothic bold", 10),corner_radius=20, command=self.tela_de_cadastro)
         self.btn_logon.grid(row=6, column=0, padx=10, pady=30)
@@ -247,23 +259,52 @@ class App(ctk.CTk, BackEnd):
         self.btn_finish_register.grid(row=4, column=0, padx=10, pady=5)
         
         self.btn_login_back = ctk.CTkButton(self.frame_register_products, width=300, text="Voltar".upper(),font=("Century Gothic bold", 12),corner_radius=20, command=self.tela_de_login)
-        self.btn_login_back.grid(row=10, column=0, padx=10, pady=50)
+        self.btn_login_back.grid(row=10, column=0, padx=10, pady=80)
         
-        '''
+        
     def ballots_result(self):
         #Adiciona frame tela de resultados
-        self.frame_results = ctk.CTk(self, width=380, fg_color="#dcdcdc", height=310)
-        self.frame_results.place(x=365, y=8)
+        self.frame_ballots_result = ctk.CTkFrame(self, width=380, fg_color="#dcdcdc", height=310)
+        self.frame_ballots_result.place(x=365, y=8)
 
         #Removendo a tela de cadastro
-        self.frame_register_produtcs.place_forget()
+        self.frame_register_products.place_forget()
         
         #Titulo da tela de resultados
-        self.lb_title = ctk.CTkLabel(self.frame_results, text="Resultado da quantidade de notas", font=("Century Gothic bold", 22))
-        self.lb_title.grid(row=0, column=0, padx=10, pady=10)
+        self.lb_title = ctk.CTkLabel(self.frame_ballots_result, text=f"Carrinho de compras R$: {self.valorTot}", font=("Century Gothic bold", 18))
+        self.lb_title.grid(row=0, column=0, padx=5, pady=0)
 
-        #Widgets frame de resultados
-        '''
+        self.lb_result = ctk.CTkLabel(self.frame_ballots_result, text=f"Quantidade mínima de notas necessárias: {self.qntTotal}", font=("Century Gothic bold", 15))
+        self.lb_result.grid(row=2, column=0, padx=5, pady=0, sticky = "w")
+
+        self.lb_result100 = ctk.CTkLabel(self.frame_ballots_result, text=f"Notas de 100: {self.notas100}", font=("Century Gothic bold", 12))
+        self.lb_result100.grid(row=3, column=0, padx=5, pady=0, sticky = "w")
+
+        self.lb_result50 = ctk.CTkLabel(self.frame_ballots_result, text=f"Notas de 50: {self.notas50}", font=("Century Gothic bold", 12))
+        self.lb_result50.grid(row=4, column=0, padx=5, pady=0, sticky = "w")
+
+        self.lb_result20 = ctk.CTkLabel(self.frame_ballots_result, text=f"Notas de 20: {self.notas20}", font=("Century Gothic bold", 12))
+        self.lb_result20.grid(row=5, column=0, padx=5, pady=0, sticky = "w")
+
+        self.lb_result10 = ctk.CTkLabel(self.frame_ballots_result, text=f"Notas de 10: {self.notas10}", font=("Century Gothic bold", 12))
+        self.lb_result10.grid(row=6, column=0, padx=5, pady=0, sticky = "w")
+
+        self.lb_result5 = ctk.CTkLabel(self.frame_ballots_result, text=f"Notas de 5: {self.notas5}", font=("Century Gothic bold", 12))
+        self.lb_result5.grid(row=7, column=0, padx=5, pady=0, sticky = "w")
+
+        self.lb_result2 = ctk.CTkLabel(self.frame_ballots_result, text=f"Notas de 2: {self.notas2}", font=("Century Gothic bold", 12))
+        self.lb_result2.grid(row=8, column=0, padx=5, pady=0, sticky = "w")
+
+        self.lb_result1 = ctk.CTkLabel(self.frame_ballots_result, text=f"Notas de 1: {self.notas1}", font=("Century Gothic bold", 12))
+        self.lb_result1.grid(row=9, column=0, padx=5, pady=0, sticky = "w")
+
+        self.btn_login_back = ctk.CTkButton(self.frame_ballots_result, width=300, height=15, text="Continuar cadastrando".upper(),font=("Century Gothic bold", 12),corner_radius=20, command=self.register_products)
+        self.btn_login_back.grid(row=10, column=0, padx=10, pady=10)
+
+        self.btn_login_exit = ctk.CTkButton(self.frame_ballots_result, width=100, height=15, text="Sair".upper(),font=("Century Gothic bold", 12),corner_radius=20, command=self.tela_de_login)
+        self.btn_login_exit.grid(row=11, column=0, padx=5, pady=0)
+
+        
 
     def limpa_entrys_cadastro(self):
         self.username_logon_entry.delete(0,END)
