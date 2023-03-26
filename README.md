@@ -89,7 +89,7 @@ After registering the product, it will be stored in a vector for the system to c
 - Dowload and execute the software: VisualG 3.
 - Download MainCodePascal in this repository.
 - Save as .ARG extension.
-- Open at the software VisualG 3.
+- Open the file .ARG at the software VisualG 3.
 - Execute it pressing F9.
 ## Python
 - Download MainCodePython in this repository.
