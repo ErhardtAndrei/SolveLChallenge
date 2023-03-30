@@ -19,7 +19,7 @@ The intelligent shopping cart is a problem proposed by the technology company So
 5- If the user decides to finish the cart, the system should display all purchased products, the total value of the cart, and the minimum number of bills required to pay for this cart. (Only the following bills should be considered: 100, 50, 20, 10, 5, 2, and 1).
 
 ## Introducing the Algorithm
-This is the first version of the proposed code, was developed in Pascal using the software VISUALG 3, since it is a generic and fast development language for simple problems. The next versions will be made in different languages such Python and JavaScript.
+This is the first version of the proposed code, was developed in Pascal using the software VISUALG 3, since it is a generic and fast development language for simple problems. The next versions will be made in Python.
 
 This challenge has an extra step, which would be to develop a registration screen for users. This step can be seen from Step Four. With the main logic developed, a graphical interface for user registration is then developed. This interface was developed in Python using the *tkinter* library. 
 
@@ -80,7 +80,6 @@ After registering the product, it will be stored in a vector for the system to c
 - Pascal
 - Python 
 - SQLite3 (as data base)
-- JavaScript (Not implemented yet)
 ## Front end
 - Python
 
