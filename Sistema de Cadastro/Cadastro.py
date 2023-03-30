@@ -16,7 +16,6 @@ valorRestante = 0
 vetPreco = []
 vetProduto = []
 valorTot= i =  0
-
 class BackEnd(): #A classe backend herda os componentes da classe principal App, por isso está dentro de App
     
     def connect_db(self): #Conectando ao banco de dados
@@ -78,7 +77,6 @@ class BackEnd(): #A classe backend herda os componentes da classe principal App,
             messagebox.showerror(title="Sistema de Login", message="Erro ao cadastrar.\nTente novamente.")
             self.desconect_db()
             
-
     def verify_login(self): #Verificação de Login
         self.username_login = self.username_login_entry.get()
         self.password_login = self.password_login_entry.get()
@@ -138,8 +136,7 @@ class BackEnd(): #A classe backend herda os componentes da classe principal App,
         self.notas5   = qtdNotas[2]
         self.notas2   = qtdNotas[1]
         self.notas1   = qtdNotas[0]
-
-        print(self.notas100)
+        
         self.ballots_result()
 
 #Classe principal. Inicia a janela
@@ -177,9 +174,6 @@ class App(ctk.CTk, BackEnd):
 
         self.password_login_entry = ctk.CTkEntry(self.frame_login, width=300, placeholder_text="Senha..",font=("Century Gothic bold", 16), corner_radius=20, show="*", border_color="#490077")
         self.password_login_entry.grid(row=2, column=0, padx=10, pady=10)
-
-        #self.ver_password_login_entry = ctk.CTkCheckBox(self.frame_login, text="Clique para ver a senha ", font=("Century Gothic bold", 12),corner_radius=25, border_color="#490077")
-        #self.ver_password_login_entry.grid(row=3, column=0, padx=10,pady=5)
 
         self.btn_login = ctk.CTkButton(self.frame_login, width=300, fg_color="#490077", text="Login",font=("Century Gothic bold", 16),corner_radius=20, command=self.verify_login)
         self.btn_login.grid(row=4, column=0, padx=10, pady=10)
