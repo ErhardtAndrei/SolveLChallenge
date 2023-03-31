@@ -118,6 +118,7 @@ class BackEnd(): #A classe backend herda os componentes da classe principal App,
             traceback.print_exc() #Conferir quais erros estão chegando ao except   
 
     def finish_registers(self):
+        
         global qtdTotalNotas
         valorTot = sum(vetPreco)
         self.valorTot = valorTot
@@ -171,12 +172,15 @@ class App(ctk.CTk, BackEnd):
 
         self.username_login_entry = ctk.CTkEntry(self.frame_login, width=300, placeholder_text="Nome de usuario..",font=("Century Gothic bold", 16), corner_radius=20, border_color="#490077")
         self.username_login_entry.grid(row=1, column=0, padx=10, pady=10)
+        self.username_login_entry.bind('<Return>', lambda event: self.verify_login())
 
         self.password_login_entry = ctk.CTkEntry(self.frame_login, width=300, placeholder_text="Senha..",font=("Century Gothic bold", 16), corner_radius=20, show="*", border_color="#490077")
         self.password_login_entry.grid(row=2, column=0, padx=10, pady=10)
+        self.password_login_entry.bind('<Return>', lambda event: self.verify_login())
 
         self.btn_login = ctk.CTkButton(self.frame_login, width=300, fg_color="#490077", text="Login",font=("Century Gothic bold", 16),corner_radius=20, command=self.verify_login)
         self.btn_login.grid(row=4, column=0, padx=10, pady=10)
+        self.btn_login.bind('<Return>', lambda event: self.verify_login())
 
         self.span = ctk.CTkLabel(self.frame_login, text="Não possui cadastro?", font=("Century Gothic", 10))
         self.span.grid(row=5, column=0, padx=10, pady=20)
@@ -256,7 +260,7 @@ class App(ctk.CTk, BackEnd):
 
         #Removendo a tela de cadastro
         self.frame_register_products.place_forget()
-        
+
         #Titulo da tela de resultados
         self.lb_title = ctk.CTkLabel(self.frame_ballots_result, text=f"Carrinho de compras R$: {self.valorTot}", font=("Century Gothic bold", 18))
         self.lb_title.grid(row=0, column=0, padx=5, pady=0)
@@ -285,11 +289,26 @@ class App(ctk.CTk, BackEnd):
         self.lb_result1 = ctk.CTkLabel(self.frame_ballots_result, text=f"Notas de 1: {self.notas1}", font=("Century Gothic bold", 12))
         self.lb_result1.grid(row=9, column=0, padx=5, pady=0, sticky = "w")
 
-        self.btn_login_back = ctk.CTkButton(self.frame_ballots_result, width=300, height=15, text="Continuar cadastrando".upper(),font=("Century Gothic bold", 12),corner_radius=20, command=self.register_products)
+        self.btn_login_back = ctk.CTkButton(self.frame_ballots_result, width=300, height=15, text="Continuar cadastrando".upper(),font=("Century Gothic bold", 12), corner_radius=20, command=self.register_products)
         self.btn_login_back.grid(row=10, column=0, padx=10, pady=10)
 
+        self.btn_view_products = ctk.CTkButton(self.frame_ballots_result, width=100, height=15, text="Produtos cadastrados".upper(),font=("Century Gothic bold", 12), corner_radius=20, command=self.registered_products)
+        self.btn_view_products.grid(row=11, column=0, padx=10, pady=0, sticky = "w")
+
         self.btn_login_exit = ctk.CTkButton(self.frame_ballots_result, width=100, height=15, text="Sair".upper(),font=("Century Gothic bold", 12),corner_radius=20, command=self.tela_de_login)
-        self.btn_login_exit.grid(row=11, column=0, padx=5, pady=0)
+        self.btn_login_exit.grid(row=11, column=0, padx=5, pady=0, sticky = "e")
+        
+    def registered_products(self):
+        #Adiciona frame tela de resultados
+        self.frame_registered_products = ctk.CTkFrame(self, width=380, fg_color="#dcdcdc", height=310)
+        self.frame_registered_products.place(x=365, y=8)
+
+        #Removendo a tela de cadastro
+        self.frame_ballots_result.place_forget()
+
+        #Titulo da tela de resultados
+        self.lb_titlee = ctk.CTkLabel(self.frame_registered_products, text="Teste", font=("Century Gothic bold", 18))
+        self.lb_titlee.grid(row=0, column=0, padx=5, pady=0)
 
     def limpa_entrys_cadastro(self):
         self.username_logon_entry.delete(0,END)
